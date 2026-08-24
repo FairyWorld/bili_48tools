@@ -128,7 +128,7 @@ export function createServer(dependencies: ServerDependencies = {}): McpServer {
 
   server.tool(
     'list_live',
-    '查询 SNH48 直播或录播列表，支持游标分页。',
+    '查询 SNH48 直播或录播列表，支持游标分页；列表项的 status 保留上游状态值。',
     {
       status: z.enum(['live', 'recording']).default('live').describe('live 查询直播，recording 查询录播'),
       groupId: z.number().int().positive().default(DEFAULT_SNH48_GROUP_ID).describe('团体 ID，SNH48 为 10'),
@@ -155,7 +155,7 @@ export function createServer(dependencies: ServerDependencies = {}): McpServer {
 
   server.tool(
     'get_live_detail',
-    '查询单场 SNH48 直播的标题、成员、时间和状态，不返回播放流地址。',
+    '查询单场 SNH48 直播的标题、成员、时间和状态，不返回播放流地址；上游未提供状态字段时 status 为 unknown。',
     {
       liveId: z.string().trim().min(1).describe('直播 ID')
     },
@@ -172,7 +172,7 @@ export function createServer(dependencies: ServerDependencies = {}): McpServer {
 
   server.tool(
     'list_performances',
-    '查询 SNH48 公演直播或录播列表，支持游标分页。',
+    '查询 SNH48 公演直播或录播列表，支持游标分页；列表项的 status 保留上游状态值。',
     {
       groupId: z.number().int().positive().default(DEFAULT_SNH48_GROUP_ID).describe('团体 ID，SNH48 为 10'),
       next: z.string().optional().describe('上一次返回的分页游标'),
