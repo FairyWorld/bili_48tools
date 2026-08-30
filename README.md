@@ -76,6 +76,7 @@ Pug + Sass + TypeScript + React + antd + Webpack + TailwindCSS + Electron。包�
 * test：E2E测试代码。
 * babel-plugin-delay-require：Babel插件，支持Node模块的按需加载。
 * postcss-plugin-remove-classnames：postcss插件，删除TailwindCSS生成的无用的class。
+* snh48-mcp：可供MCP客户端调用的SNH48只读查询服务。
 
 ### 开发过程
 
